@@ -44,7 +44,7 @@ function validateNameInput() {
 
 function validatePriceInput() {
     errorMessage = [];
-    const numbers = /^[0-9\. \$]+$/;
+    const numbers = /^[0-9\. ]+$/;
 
     if(!numbers.test(String(price_input.value))) {
       errorMessage.push("Please, provide the data of indicated type");
