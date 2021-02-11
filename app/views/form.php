@@ -7,7 +7,7 @@ require APPROOT . '/views/includes/head.php';
     <div class="inner-header">
       <h1>Product Add</h1>
       <div class="button-wrap">
-        <button class="btn1" id="submit-btn" type="submit" form="form">Save</button>
+        <button class="btn1" id="submit-btn" name="submit" type="submit" form="form" value="Submit">Save</button>
         <button class="btn2"><a href="<?php echo URLROOT ?>">Cancel</a></button>
       </div>
     </div>
@@ -16,7 +16,7 @@ require APPROOT . '/views/includes/head.php';
   <main>
     <div class="form-container">
 
-      <form novalidate id="form">
+      <form novalidate id="form" action="<?php echo URLROOT; ?>product/form" method="POST">
         <div class="form-item">
           <label class="label-text" for="sku">SKU</label>
           <input type="text" id="sku" name="sku" required>
@@ -46,9 +46,12 @@ require APPROOT . '/views/includes/head.php';
       </form>
 
       <div class="error-container" id="js-error-container">
-        <p class="error">
-        </p>
+        <p class="error"></p>
+        <span class="invalidFeedback">
+          <?php echo $data['error']; ?>
+        </span>
       </div>
+
 
     </div> <!-- /.form-container -->
   </main>
@@ -60,6 +63,6 @@ require APPROOT . '/views/includes/head.php';
 </div> <!-- /.page-container -->
 </body>
 
-<script src="<?php echo URLROOT ?>/public/js/validation.js"></script>
+<script src="<?php echo URLROOT ?>public/js/validation.js"></script>
 
 </html>

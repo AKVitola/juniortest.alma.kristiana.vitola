@@ -17,17 +17,76 @@ class Products extends Controller
         $this->view('index', $data);
     }
 
-    // public function create()
-    // {
-    // }
-
-    // public function delete($id)
-    // {
-    // }
-
-
     public function form()
     {
-        $this->view('form');
+        $data = [
+            'sku' => '',
+            'name' => '',
+            'price' => '',
+            // 'atributes' => '',
+            'error' => ''
+        ];
+
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'sku' => trim($_POST['sku']),
+                'name' => trim($_POST['name']),
+                'price' => trim($_POST['price']),
+                // 'atributes' => trim($_POST['atributes']),
+                'error' => ''
+            ];
+
+            if (empty($data['sku'])) {
+                $data['error'] = 'Please, submit required data';
+            }
+            if (empty($data['name'])) {
+                $data['error'] = 'Please, submit required data';
+            }
+            if (empty($data['price'])) {
+                $data['error'] = 'Please, submit required data';
+            }
+            // if (empty($data['atributes'])) {
+            //     $data['error'] = 'Please, submit required data';
+            // }
+
+            if (empty($data['error'])) {
+                if ($this->productModel->addProduct($data)) {
+                    header("Location: " . URLROOT . "products/index");
+                } else {
+                    die("Something went wrong, please try again!");
+                }
+            } else {
+                $this->view('form', $data);
+            }
+        }
+
+        $this->view('form', $data);
+    }
+
+    public function delete($id)
+    {
+        $product = $this->productModel->findProductById($id);
+
+        $data = [
+            'product' => $product,
+            'sku' => '',
+            'name' => '',
+            'price' => '',
+            // 'atributes' => '',
+            'error' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            if ($this->productModel->deleteProduct($id)) {
+                header("Location: " . URLROOT . "products/index");
+            } else {
+                die('Something went wrong!');
+            }
+        }
     }
 }
