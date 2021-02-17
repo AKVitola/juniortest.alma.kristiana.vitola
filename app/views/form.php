@@ -62,7 +62,7 @@ require APPROOT . '/views/includes/head.php';
 
 </div> <!-- /.page-container -->
 </body>
-
 <script src="<?php echo URLROOT ?>public/js/validation.js"></script>
+<script src="<?php echo URLROOT ?>public/js/ajax.js"></script>
 
 </html>

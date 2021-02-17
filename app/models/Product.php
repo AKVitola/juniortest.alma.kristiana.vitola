@@ -1,7 +1,7 @@
 <?php
 class Product
 {
-    private $db;
+    protected $db;
     public function __construct()
     {
         $this->db = new Database;
@@ -32,22 +32,9 @@ class Product
         }
     }
 
-    public function findProductById($id)
+    public function deleteProduct($productId)
     {
-        $this->db->query('SELECT * FROM products WHERE id = :id');
-
-        $this->db->bind(':id', $id);
-
-        $row = $this->db->single();
-
-        return $row;
-    }
-
-    public function deleteProduct($id)
-    {
-        $this->db->query('DELETE FROM products WHERE id = :id');
-
-        $this->db->bind(':id', $id);
+        $this->db->query("DELETE FROM products WHERE id IN ($productId)");
 
         if ($this->db->execute()) {
             return true;

@@ -66,27 +66,28 @@ class Products extends Controller
         $this->view('form', $data);
     }
 
-    public function delete($id)
+    public function delete()
     {
-        $product = $this->productModel->findProductById($id);
+        $checkedProduct = $_POST["checkedArray"];
+        $productId = implode(', ', $checkedProduct);
 
-        $data = [
-            'product' => $product,
-            'sku' => '',
-            'name' => '',
-            'price' => '',
-            // 'atributes' => '',
-            'error' => ''
-        ];
+        $this->productModel->deleteProduct($productId);
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        echo json_encode('Deleted successfully!');
+    }
 
-            if ($this->productModel->deleteProduct($id)) {
-                header("Location: " . URLROOT . "products/index");
-            } else {
-                die('Something went wrong!');
-            }
-        }
+    public function generateProductField()
+    {
+        $type = $_POST["selectedType"];
+
+        // $class = ucfirst(strtolower($type));
+
+        //TODO: problēma - Product factory funkcija getProduct nevar atrast nevienu klasi
+        $product = ProductFactory::getProduct($type);
+
+
+        // $product = $this->productFactory->getProduct($type);
+
+        return $product->generateFormField();
     }
 }
