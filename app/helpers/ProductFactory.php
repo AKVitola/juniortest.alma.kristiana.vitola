@@ -3,11 +3,14 @@ class ProductFactory
 {
     public static function getProduct($type)
     {
-        // $class = ucfirst(strtolower($type));
+        $class = ucfirst(strtolower($type));
 
-        if (class_exists($type)) {
-            return new $type();
+        include "../app/models/$class.php";
+
+        if (class_exists($class)) {
+            return new $class();
         }
-        throw new Exception('Unsupported type: ' . $type);
+
+        throw new Exception('Unsupported type: ' . $class);
     }
 }

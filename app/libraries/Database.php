@@ -63,11 +63,4 @@ class Database
     $this->execute();
     return $this->statement->fetchAll(PDO::FETCH_OBJ);
   }
-
-  // Return a specific row as an object
-  public function single()
-  {
-    $this->execute();
-    return $this->statement->fetch(PDO::FETCH_OBJ);
-  }
 }

@@ -33,7 +33,7 @@ require APPROOT . '/views/includes/head.php';
         </div>
 
         <div class="form-item">
-          <label for="type">Type Switcher</label>
+          <label class="type-label" for="type">Type Switcher</label>
           <select class="type-select" id="type" name="type" required>
             <option class="product-type" value="" disabled selected hidden>Type Switcher</option>
             <option class="product-type" value="dvd">DVD</option>
@@ -42,16 +42,16 @@ require APPROOT . '/views/includes/head.php';
           </select>
         </div>
 
-        <div class="dynamic-content-box" id="id-dynamic-content"></div>
+        <div id="id-dynamic-content"></div>
       </form>
 
+    <div class="error-box">
       <div class="error-container" id="js-error-container">
-        <p class="error"></p>
-        <span class="invalidFeedback">
-          <?php echo $data['error']; ?>
-        </span>
+        <!-- <span class="invalidFeedback">
+          <?php //echo $data['error']; ?>
+        </span> -->
       </div>
-
+    </div>
 
     </div> <!-- /.form-container -->
   </main>

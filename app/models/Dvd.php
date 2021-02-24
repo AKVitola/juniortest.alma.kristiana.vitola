@@ -1,5 +1,4 @@
 <?php
-
 class Dvd implements ProductInterface
 {
     public function displayProduct()
@@ -8,11 +7,13 @@ class Dvd implements ProductInterface
 
     public function generateFormField()
     {
-        $field = '<div class="form-item dynamic-content">';
-        $field .= '<label class="label-text" for="size">Size(MB)</label>';
-        $field .= '<input type="number" id="size" name="size" required>';
+        $field = '<div class="dynamic-content">';
+        $field .= '<div class="form-item">';
+        $field .= '<label class="label-text dvd" for="size">Size(MB)</label>';
+        $field .= '<input id="size" name="size" required>';
         $field .= '</div>';
         $field .= '<p>Please, provide size</p>';
+        $field .= '</div>';
 
         return $field;
     }

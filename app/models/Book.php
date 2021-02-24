@@ -7,11 +7,13 @@ class Book implements ProductInterface
 
     public function generateFormField()
     {
-        $field = '<div class="form-item dynamic-content">';
-        $field .= '<label class="label-text" for="weight">Weight(KG)</label>';
-        $field .= '<input type="number" id="weight" name="weight" required>';
+        $field = '<div class="dynamic-content">';
+        $field .= '<div class="form-item">';
+        $field .= '<label class="label-text long" for="weight">Weight(KG)</label>';
+        $field .= '<input id="weight" name="weight" required>';
         $field .= '</div>';
         $field .= '<p>Please, provide weight</p>';
+        $field .= '</div>';
 
         return $field;
     }

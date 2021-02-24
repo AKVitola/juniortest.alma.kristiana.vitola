@@ -1,5 +1,4 @@
 <?php
-
 interface ProductInterface
 {
     public function displayProduct();

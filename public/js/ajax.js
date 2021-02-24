@@ -8,7 +8,8 @@ if(checkbox !== null) {
      for (let i = 0; i < checkbox.length; i++) {
          checkbox[i].addEventListener('change', getCheckedProducts);
      }
-    }
+}
+
 if(deleteBtn !== null) {
     deleteBtn.addEventListener('click', deleteProducts);
 }
@@ -30,8 +31,9 @@ function displayProductField() {
         encode   : true,
     })
 
-    .done(function() {
-        console.log("Test");
+    .done(function(response) {
+        $('#id-dynamic-content').empty();
+        $('#id-dynamic-content').append(response);
     })
 }
 

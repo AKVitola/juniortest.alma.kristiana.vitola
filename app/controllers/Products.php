@@ -39,6 +39,7 @@ class Products extends Controller
                 'error' => ''
             ];
 
+
             if (empty($data['sku'])) {
                 $data['error'] = 'Please, submit required data';
             }
@@ -80,14 +81,13 @@ class Products extends Controller
     {
         $type = $_POST["selectedType"];
 
-        // $class = ucfirst(strtolower($type));
-
-        //TODO: problēma - Product factory funkcija getProduct nevar atrast nevienu klasi
         $product = ProductFactory::getProduct($type);
 
+        echo json_encode($product->generateFormField());
+    }
 
-        // $product = $this->productFactory->getProduct($type);
+    public function getAtributeData()
+    {
 
-        return $product->generateFormField();
     }
 }

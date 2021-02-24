@@ -17,7 +17,6 @@ require APPROOT . '/views/includes/head.php';
     <div class="grid-container">
       <?php
       foreach ($data['products'] as $product) : ?>
-
         <div class="grid-item">
           <input class="checkbox" id="<?php echo $product->id; ?>" type="checkbox" name="delete">
           <div class="inner-grid-item">
