@@ -16,16 +16,19 @@ require APPROOT . '/views/includes/head.php';
   <main>
     <div class="grid-container">
       <?php
-      foreach ($data['products'] as $product) : ?>
+      foreach ($data['products'] as $product) :
+        $productObject = ProductFactory::getProduct($product->type); ?>
+
         <div class="grid-item">
           <input class="checkbox" id="<?php echo $product->id; ?>" type="checkbox" name="delete">
           <div class="inner-grid-item">
             <p><?php echo $product->sku; ?></p>
             <p><?php echo $product->name; ?></p>
             <p><?php echo $product->price; ?> $</p>
-            <p><?php echo $product->atributes; ?></p>
+            <p><?php echo $productObject->formatAtributeData(json_decode($product->atributes)); ?></p>
           </div>
         </div>
+
       <?php endforeach; ?>
     </div>
   </main>

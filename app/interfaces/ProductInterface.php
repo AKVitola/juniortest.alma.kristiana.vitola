@@ -1,6 +1,7 @@
 <?php
 interface ProductInterface
 {
-    public function displayProduct();
     public function generateFormField();
+    public function getAtributeFromPost();
+    public function formatAtributeData($atributes);
 }

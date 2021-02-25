@@ -18,11 +18,12 @@ class Product
 
     public function addProduct($data)
     {
-        $this->db->query('INSERT INTO products (sku, name, price, atributes) VALUES (:sku, :name, :price, :atributes)');
+        $this->db->query('INSERT INTO products (sku, name, price, type, atributes) VALUES (:sku, :name, :price, :type, :atributes)');
 
         $this->db->bind(':sku', $data['sku']);
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':price', $data['price']);
+        $this->db->bind(':type', $data['type']);
         $this->db->bind(':atributes', $data['atributes']);
 
         if ($this->db->execute()) {

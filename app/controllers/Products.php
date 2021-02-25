@@ -23,10 +23,10 @@ class Products extends Controller
             'sku' => '',
             'name' => '',
             'price' => '',
-            // 'atributes' => '',
+            'type' => '',
+            'atributes' => '',
             'error' => ''
         ];
-
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -35,20 +35,20 @@ class Products extends Controller
                 'sku' => trim($_POST['sku']),
                 'name' => trim($_POST['name']),
                 'price' => trim($_POST['price']),
-                // 'atributes' => trim($_POST['atributes']),
+                'type' => trim($_POST['type']),
+                'atributes' => $this->getAtributeData(),
                 'error' => ''
             ];
 
-
-            if (empty($data['sku'])) {
-                $data['error'] = 'Please, submit required data';
-            }
-            if (empty($data['name'])) {
-                $data['error'] = 'Please, submit required data';
-            }
-            if (empty($data['price'])) {
-                $data['error'] = 'Please, submit required data';
-            }
+            // if (empty($data['sku'])) {
+            //     $data['error'] = 'Please, submit required data';
+            // }
+            // if (empty($data['name'])) {
+            //     $data['error'] = 'Please, submit required data';
+            // }
+            // if (empty($data['price'])) {
+            //     $data['error'] = 'Please, submit required data';
+            // }
             // if (empty($data['atributes'])) {
             //     $data['error'] = 'Please, submit required data';
             // }
@@ -88,6 +88,10 @@ class Products extends Controller
 
     public function getAtributeData()
     {
+        $type = $_POST["type"];
 
+        $product = ProductFactory::getProduct($type);
+
+        return json_encode($product->getAtributeFromPost());
     }
 }

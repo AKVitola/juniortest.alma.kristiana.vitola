@@ -1,10 +1,6 @@
 <?php
 class Furniture implements ProductInterface
 {
-    public function displayProduct()
-    {
-    }
-
     public function generateFormField()
     {
         $field = '<div class="dynamic-content">';
@@ -26,5 +22,20 @@ class Furniture implements ProductInterface
         $field .= '</div>';
 
         return $field;
+    }
+
+    public function getAtributeFromPost() {
+          $atributesData = [
+            'height' => trim($_POST['height']),
+            'width' => trim($_POST['width']),
+            'length' => trim($_POST['length'])
+          ];
+
+        return $atributesData;
+    }
+
+    public function formatAtributeData($atributes)
+    {
+      return "Dimension: " . $atributes->height . "x" . $atributes->width . "x" . $atributes->length;
     }
 }

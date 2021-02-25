@@ -1,10 +1,6 @@
 <?php
 class Book implements ProductInterface
 {
-    public function displayProduct()
-    {
-    }
-
     public function generateFormField()
     {
         $field = '<div class="dynamic-content">';
@@ -16,5 +12,18 @@ class Book implements ProductInterface
         $field .= '</div>';
 
         return $field;
+    }
+
+    public function getAtributeFromPost() {
+        $atributesData = [
+            'weight' => trim($_POST['weight'])
+        ];
+
+        return $atributesData;
+    }
+
+    public function formatAtributeData($atributes)
+    {
+        return "Weight: " . $atributes->weight . " KG";
     }
 }

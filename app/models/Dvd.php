@@ -1,10 +1,6 @@
 <?php
 class Dvd implements ProductInterface
 {
-    public function displayProduct()
-    {
-    }
-
     public function generateFormField()
     {
         $field = '<div class="dynamic-content">';
@@ -16,5 +12,19 @@ class Dvd implements ProductInterface
         $field .= '</div>';
 
         return $field;
+    }
+
+    public function getAtributeFromPost()
+    {
+          $atributesData = [
+            'size' => trim($_POST['size'])
+          ];
+
+        return $atributesData;
+    }
+
+    public function formatAtributeData($atributes)
+    {
+        return "Size: " . $atributes->size . " MB";
     }
 }
