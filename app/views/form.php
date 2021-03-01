@@ -19,17 +19,17 @@ require APPROOT . '/views/includes/head.php';
       <form novalidate id="form" action="<?php echo URLROOT; ?>product/form" method="POST">
         <div class="form-item">
           <label class="label-text" for="sku">SKU</label>
-          <input type="text" id="sku" name="sku" required>
+          <input id="sku" name="sku" required>
         </div>
 
         <div class="form-item">
           <label class="label-text" for="name">Name</label>
-          <input type="text" id="name" name="name" required>
+          <input id="name" name="name" required>
         </div>
 
         <div class="form-item">
           <label class="label-text" for="price">Price($)</label>
-          <input type="text" id="price" name="price" required>
+          <input id="price" name="price" required>
         </div>
 
         <div class="form-item">

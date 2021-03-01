@@ -5,7 +5,7 @@ class ProductFactory
     {
         $class = ucfirst(strtolower($type));
 
-        include "../app/models/$class.php";
+        include_once "../app/models/$class.php";
 
         if (class_exists($class)) {
             return new $class();
