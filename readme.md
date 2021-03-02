@@ -39,8 +39,8 @@ In order to work with db you have to create a file called config.php in the conf
 > `type` varchar(20) COLLATE utf8_bin NOT NULL,
 > `atributes` json DEFAULT NULL,
 > PRIMARY KEY (`id`),
-> UNIQUE KEY `sku_unique` (`sku`)
-> ) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+> KEY `sku` (`sku`) USING BTREE
+> ) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
 
 ### Routes for all project pages
 
