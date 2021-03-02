@@ -9,7 +9,7 @@ class Product
 
     public function getAllProducts()
     {
-        $this->db->query('SELECT * FROM products');
+        $this->db->query('SELECT * FROM products ORDER by id ASC');
 
         $result = $this->db->resultSet();
 
