@@ -18,7 +18,7 @@ require APPROOT . '/views/includes/head.php';
     <main>
         <div class="form-container">
 
-        <form novalidate id="form" action="<?php echo URLROOT; ?>product/form" method="POST">
+        <form novalidate id="form" action="<?php echo URLROOT; ?>product/add" method="POST">
             <div class="form-item">
                 <label class="label-text" for="sku">SKU</label>
                 <input id="sku" name="sku" required>

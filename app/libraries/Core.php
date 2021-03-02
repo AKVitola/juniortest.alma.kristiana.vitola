@@ -8,7 +8,7 @@
 class Core
 {
     protected $currentController = 'Products';
-    protected $currentMethod = 'index';
+    protected $currentMethod = 'list';
     protected $params = [];
 
     public function __construct()

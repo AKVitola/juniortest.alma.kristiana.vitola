@@ -8,7 +8,7 @@ require APPROOT . '/views/includes/head.php';
         <h1>Product List</h1>
         <div class="list-page button-wrap">
             <button class="btn1">
-                <a href="<?php echo URLROOT ?>products/form">ADD</a>
+                <a href="<?php echo URLROOT ?>products/add">ADD</a>
             </button>
             <button class="btn2" id="delete-button" type="submit" name="delete-button"> MASS DELETE</button>
         </div>

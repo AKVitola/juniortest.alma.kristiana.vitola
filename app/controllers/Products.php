@@ -6,7 +6,7 @@ class Products extends Controller
         $this->productModel = $this->model('Product');
     }
 
-    public function index()
+    public function list()
     {
         $products = $this->productModel->getAllProducts();
 
@@ -14,10 +14,10 @@ class Products extends Controller
             'products' => $products
         ];
 
-        $this->view('index', $data);
+        $this->view('list', $data);
     }
 
-    public function form()
+    public function add()
     {
         $data = [
             'sku' => '',
@@ -39,12 +39,12 @@ class Products extends Controller
             ];
 
             if ($this->productModel->addProduct($data)) {
-                header("Location: " . URLROOT . "products/index");
+                header("Location: " . URLROOT . "products/list");
             } else {
                 die("Something went wrong, please try again!");
             }
         }
-        $this->view('form', $data);
+        $this->view('add', $data);
     }
 
     public function delete()
