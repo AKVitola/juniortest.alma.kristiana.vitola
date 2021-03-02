@@ -14,7 +14,8 @@ class Book implements ProductInterface
         return $field;
     }
 
-    public function getAtributeFromPost() {
+    public function getAtributeFromPost()
+    {
         $atributesData = [
             'weight' => trim($_POST['weight'])
         ];

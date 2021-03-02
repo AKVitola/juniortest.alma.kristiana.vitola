@@ -16,9 +16,9 @@ class Dvd implements ProductInterface
 
     public function getAtributeFromPost()
     {
-          $atributesData = [
-            'size' => trim($_POST['size'])
-          ];
+        $atributesData = [
+        'size' => trim($_POST['size'])
+        ];
 
         return $atributesData;
     }

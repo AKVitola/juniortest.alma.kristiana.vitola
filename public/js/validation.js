@@ -1,8 +1,8 @@
-const form           = document.getElementById("form");
-const button         = document.getElementById("submit-btn");
+const form = document.getElementById("form");
+const button = document.getElementById("submit-btn");
 const errorContainer = document.getElementById("js-error-container");
-let errorMessage     = [];
-const allInputs      = [
+let errorMessage = [];
+const allInputs = [
     {
         id: "sku",
         value_type: "alphaNumeric"
@@ -41,11 +41,11 @@ const allInputs      = [
     },
 ];
 
-form.addEventListener("input", function() {
+form.addEventListener("input", function () {
     errorMessage = [];
 
-    for(let i = 0; i < allInputs.length; i++) {
-         if (errorMessage.length !== 0) {
+    for (let i = 0; i < allInputs.length; i++) {
+        if (errorMessage.length !== 0) {
             break;
         };
 
@@ -53,22 +53,22 @@ form.addEventListener("input", function() {
         let inputField = document.getElementById(input.id);
 
         if (inputField !== null && inputField.value.length !== 0) {
-                switch (input.value_type) {
-                    case "alphaNumeric":
-                            isAlphaNumeric(inputField.value);
-                        break;
+            switch (input.value_type) {
+                case "alphaNumeric":
+                    isAlphaNumeric(inputField.value);
+                    break;
 
-                    case "numeric":
-                            isNumeric(inputField.value);
-                        break;
+                case "numeric":
+                    isNumeric(inputField.value);
+                    break;
 
-                    default:
-                };
+                default:
             };
+        };
     }
 });
 
-button.addEventListener("click", function() {
+button.addEventListener("click", function () {
     form.addEventListener("submit", submitValidation());
 });
 
@@ -89,7 +89,7 @@ function isNumeric(inputValue) {
 }
 
 function inputValueValidation(regex, inputValue) {
-    if(!regex.test(String(inputValue))) {
+    if (!regex.test(String(inputValue))) {
         errorMessage.push("Please, provide the data of indicated type");
     }
 
@@ -101,8 +101,8 @@ function validateEmtyInput() {
     allInputs.forEach(input => {
         let inputField = document.getElementById(input.id);
 
-        if(inputField !== null) {
-            if(inputField.value.length === 0 && inputField.value == "") {
+        if (inputField !== null) {
+            if (inputField.value.length === 0 && inputField.value == "") {
                 errorMessage = [];
                 errorMessage.push("Please, submit required data");
                 disableSubmitBtn();
@@ -139,7 +139,7 @@ function displayError() {
 }
 
 function formatSubmitButton() {
-    if(errorMessage.length !== 0) {
+    if (errorMessage.length !== 0) {
         disableSubmitBtn();
     } else {
         enableSubmitBtn();

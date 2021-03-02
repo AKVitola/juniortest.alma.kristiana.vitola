@@ -24,18 +24,19 @@ class Furniture implements ProductInterface
         return $field;
     }
 
-    public function getAtributeFromPost() {
-          $atributesData = [
-            'height' => trim($_POST['height']),
-            'width' => trim($_POST['width']),
-            'length' => trim($_POST['length'])
-          ];
+    public function getAtributeFromPost()
+    {
+        $atributesData = [
+          'height' => trim($_POST['height']),
+          'width' => trim($_POST['width']),
+          'length' => trim($_POST['length'])
+        ];
 
         return $atributesData;
     }
 
     public function formatAtributeData($atributes)
     {
-      return "Dimension: " . $atributes->height . "x" . $atributes->width . "x" . $atributes->length;
+        return "Dimension: " . $atributes->height . "x" . $atributes->width . "x" . $atributes->length;
     }
 }

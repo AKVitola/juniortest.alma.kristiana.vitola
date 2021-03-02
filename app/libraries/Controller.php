@@ -1,11 +1,9 @@
 <?php
-//Load the model and the view
 class Controller
 {
     protected function model($model)
     {
         require_once '../app/models/' . $model . '.php';
-        //Instantiate model
         return new $model();
     }
 

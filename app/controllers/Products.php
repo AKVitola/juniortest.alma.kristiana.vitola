@@ -25,7 +25,6 @@ class Products extends Controller
             'price' => '',
             'type' => '',
             'atributes' => '',
-            'error' => ''
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -37,33 +36,14 @@ class Products extends Controller
                 'price' => trim($_POST['price']),
                 'type' => trim($_POST['type']),
                 'atributes' => $this->getAtributeData(),
-                'error' => ''
             ];
 
-            // if (empty($data['sku'])) {
-            //     $data['error'] = 'Please, submit required data';
-            // }
-            // if (empty($data['name'])) {
-            //     $data['error'] = 'Please, submit required data';
-            // }
-            // if (empty($data['price'])) {
-            //     $data['error'] = 'Please, submit required data';
-            // }
-            // if (empty($data['atributes'])) {
-            //     $data['error'] = 'Please, submit required data';
-            // }
-
-            if (empty($data['error'])) {
-                if ($this->productModel->addProduct($data)) {
-                    header("Location: " . URLROOT . "products/index");
-                } else {
-                    die("Something went wrong, please try again!");
-                }
+            if ($this->productModel->addProduct($data)) {
+                header("Location: " . URLROOT . "products/index");
             } else {
-                $this->view('form', $data);
+                die("Something went wrong, please try again!");
             }
         }
-
         $this->view('form', $data);
     }
 

@@ -6,5 +6,4 @@ require_once 'config/config.php';
 require_once 'helpers/ProductFactory.php';
 require_once 'interfaces/ProductInterface.php';
 
-//Instantiate core class
 $init = new Core();
